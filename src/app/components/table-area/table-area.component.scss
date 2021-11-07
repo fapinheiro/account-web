@@ -1,0 +1,29 @@
+table {
+	width: 100%;
+	background-color: #fff;
+	padding: 20px;
+	box-shadow: 0px 0px 5px #ccc;
+	border-radius: 10px;
+	margin-top: 20px;
+
+	th {
+		padding: 10px 0;
+		text-align: left;
+	}
+
+}
+
+.category {
+	display: inline-block;
+	padding: 5px 10px;
+	border-radius: 5px;
+	color: white;
+}
+
+.blue {
+	color: blue
+}
+
+.red {
+	color: red
+}

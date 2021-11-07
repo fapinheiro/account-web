@@ -1,0 +1,27 @@
+<table>
+	<thead>
+		<tr>
+			<th style="width: 100px">Data</th>
+			<th style="width: 130px">Categoria</th>
+			<th style="width: auto">Titulo</th>
+			<th style="width: 100px">Valor</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of items; let i = index">
+			<td>{{item.date | date:'d/MM/yy'}}</td>
+			<td>
+				<div class="category" [ngStyle]="{backgroundColor: item.category.color}">
+					{{item.category.title}}
+				</div>
+			</td>
+			<td>{{item.title}}</td>
+			<td>
+				<div class="value" [class.red]="item.category.expense === true" [class.blue]="item.category.expense === false">
+					{{item.value | currency:'BRL'}}
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
