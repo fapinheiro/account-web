@@ -41,11 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         .subscribe(
           data => {
             this.month = data.month;
-            this.store.dispatch(
-              new ItemActions.SetItems(
-                items
-              )
-            );
+            this.items = Helper.filteredListByMonth(items, this.month);
           }
         );
   }
