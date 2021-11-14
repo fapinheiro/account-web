@@ -7,12 +7,14 @@ import { HomeComponent } from './pages/home/home.component';
 import { TableAreaComponent } from './components/table-area/table-area.component';
 import { StoreModule } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
+import { InfoAreaComponent } from './components/info-area/info-area.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    TableAreaComponent
+    TableAreaComponent,
+    InfoAreaComponent
   ],
   imports: [
     BrowserModule,

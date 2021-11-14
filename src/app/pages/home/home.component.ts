@@ -6,6 +6,7 @@ import * as fromApp from '../../store/app.reducer';
 import * as ItemActions from '../../store/item/item.actions';
 import { Item } from '../../model/item.model';
 import * as Helper from '../../helpers/dataFilter';
+import { items } from '../../data/items'
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   items: Item[] = [];
   itemFilteredSubscription!: Subscription;
+  
+  month: string = Helper.getCurrentMonth();
+  monthSubscription: Subscription;
 
   constructor(
     private store: Store<fromApp.AppState>
@@ -29,13 +33,25 @@ export class HomeComponent implements OnInit, OnDestroy {
         })
       ).subscribe(
         items => {
-          this.items = Helper.filteredListByMonth(items, Helper.getCurrentMonth());
+          this.items = Helper.filteredListByMonth(items, this.month);
         }
       );
-      
+  
+    this.monthSubscription = this.store.select('month')
+        .subscribe(
+          data => {
+            this.month = data.month;
+            this.store.dispatch(
+              new ItemActions.SetItems(
+                items
+              )
+            );
+          }
+        );
   }
 
   ngOnDestroy(): void {
     this.itemFilteredSubscription.unsubscribe();
+    this.monthSubscription.unsubscribe();
   }
 }

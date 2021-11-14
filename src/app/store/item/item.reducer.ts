@@ -15,7 +15,7 @@ export function itemReducer(state: MyState = initialState, action: any) {
 		case ItemActions.SET_ITEMS:
 			return {
 				...state,
-				items: [action.payload]
+				items: action.payload
 			}
 
 		case ItemActions.ADD_ITEM:
